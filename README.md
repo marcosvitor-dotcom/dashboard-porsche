@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Dashboard de Campanha Publicitária — Exemplo de Portfólio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Projeto desenvolvido por **Marcos Vitor** para a **Losning Tech**  
+> Este dashboard é um exemplo real de entrega — demonstra nossa abordagem e capacidade técnica em projetos de visualização de dados.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## O que é este projeto
 
-### `npm start`
+Este é um dashboard interativo desenvolvido para análise de campanhas publicitárias. Ele centraliza dados de múltiplos canais de mídia em uma única interface, permitindo que o cliente acompanhe o desempenho da campanha em tempo real, sem precisar acessar cada plataforma separadamente.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O projeto cobre canais como Meta Ads, TikTok, Google Ads, LinkedIn, Pinterest, Kwai, mídia offline e dados orgânicos — tudo consolidado em uma visão única, com exportação em PDF.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Como funciona
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A solução é composta por três camadas que se comunicam de forma integrada:
 
-### `npm run build`
+### 1. Banco de Dados em Planilhas (Arquitetura Medalhão)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Os dados são organizados em camadas dentro do Google Sheets, seguindo a arquitetura medalhão:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Bronze** — dados brutos exportados diretamente das plataformas de mídia, sem tratamento
+- **Prata** — dados limpos, padronizados e validados, prontos para análise
+- **Ouro** — dados consolidados e agregados, organizados especificamente para alimentar o dashboard
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Essa estrutura garante rastreabilidade (sempre é possível voltar à fonte), facilidade de atualização e separação clara entre o dado bruto e o dado apresentado ao cliente.
 
-### `npm run eject`
+### 2. API (Backend)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Uma API intermediária conecta o banco de dados ao dashboard. Ela é responsável por ler as planilhas, retornar os dados no formato correto para cada tela e garantir que o frontend nunca acesse a fonte de dados diretamente.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A API é leve, segura e hospedada em nuvem — funciona como uma camada de proteção e padronização entre os dados e a visualização.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Dashboard (Frontend)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Interface construída em React com TypeScript. Cada página do dashboard representa uma visão diferente da campanha:
 
-## Learn More
+- Visão geral e linha do tempo da campanha
+- Tráfego, engajamento e desempenho por canal
+- Criativos veiculados por plataforma
+- Dados orgânicos (sem investimento em mídia)
+- Análise de buscas no Google
+- Análise semanal de resultados
+- Investimento e mídia offline
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+O design é responsivo, com gráficos interativos e possibilidade de exportar relatórios em PDF.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Tecnologias utilizadas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Camada | Tecnologias |
+|--------|------------|
+| Banco de dados | Google Sheets (arquitetura medalhão) |
+| Backend (API) | Node.js, NestJS, Google APIs |
+| Frontend | React 19, TypeScript, Tailwind CSS |
+| Gráficos | Nivo Charts, D3.js |
+| Autenticação | Google OAuth |
+| Vercel |
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## O que este projeto demonstra
 
-### Making a Progressive Web App
+- Capacidade de integrar múltiplas fontes de dados em uma única visualização
+- Estruturação de dados com arquitetura medalhão (bronze → prata → ouro)
+- Desenvolvimento de API própria como camada intermediária segura
+- Construção de dashboards interativos com foco em clareza e usabilidade
+- Entrega de produto funcional, hospedado e acessível via web
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Sobre a Losning Tech
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A Losning Tech desenvolve soluções de dados e tecnologia sob medida para agências e empresas que precisam transformar dados em decisões. Este projeto é um exemplo do que entregamos — fale com a gente para entender como podemos adaptar isso para o seu negócio.
